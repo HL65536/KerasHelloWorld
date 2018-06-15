@@ -10,18 +10,16 @@ import webbrowser
 import os
 
 def funcToLearn(x):
-    return math.sin(x*3)*(x*x)/(x*x+1) #(x*x*x+5*x*x*x*x-x*20)/math.log(x*x+2,2)
-
-
+    return x*x
 
 
 def buildModel():
     lr=0.04
     model = Sequential()
-    model.add(Dense(24, activation='tanh',input_shape=[1]))
-    model.add(Dense(40, activation='tanh'))
-    model.add(Dense(24, activation='tanh'))
-    model.add(Dense(1))
+    #model.add(Dense(24, activation='tanh',input_shape=[1]))
+    #model.add(Dense(40, activation='tanh'))
+    #model.add(Dense(24, activation='tanh'))
+    model.add(Dense(1, input_shape=[1]))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
     return model
 
