@@ -41,15 +41,15 @@ def plot(func,start,end,vals):
     plt.plot(inVals, outVals)
     plt.show()
 
-xxpected,yxpected=getArrs(funcToLearn,-4,4,1200)
-xtrain,ytrain=getArrs(funcToLearn,-2.5,2.5,65536)
+xxpected,yxpected=getArrs(funcToLearn,0,4,1200)
+xtrain,ytrain=getArrs(funcToLearn,0,2.5,256)
 
 model=buildModel()
 
-for i in range(128):
+for i in range(5):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
-    xtest,ytest=getArrs(model.predict,-3.2,3.2,1024)
+    xtest,ytest=getArrs(model.predict,0,3.2,512)
     plt.figure(i)
     i += 1
     plt.plot(xtest.flatten(), ytest.flatten(), 'b')
