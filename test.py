@@ -10,7 +10,7 @@ import webbrowser
 import os
 
 def funcToLearn(x):
-    return x*x
+    return x*x-4
 
 
 def buildModel():
@@ -45,11 +45,11 @@ def plot(func,start,end,vals):
     plt.show()
 
 xxpected,yxpected=getArrs(funcToLearn,0,4,1200)
-xtrain,ytrain=getArrs(funcToLearn,0,2.5,256)
+xtrain,ytrain=getArrs(funcToLearn,0,2.5,1280)
 
 model=buildModel()
 
-for i in range(10):
+for i in range(5):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
     xtest,ytest=getArrs(model.predict,0,3.2,512)
