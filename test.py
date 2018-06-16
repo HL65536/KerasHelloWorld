@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy
 import webbrowser
 import os
+import time
 
 def funcToLearn(x):
     return x*x-4
@@ -21,6 +22,8 @@ def buildModel():
     #model.add(Dense(40, activation='tanh'))
     #model.add(Dense(24, activation='tanh'))
     model.add(Dense(1, input_shape=[1]))
+    model.add(keras.layers.LeakyReLU(alpha=alpha))
+    model.add(Dense(1))
     model.add(keras.layers.LeakyReLU(alpha=alpha))
     model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
@@ -49,7 +52,7 @@ xtrain,ytrain=getArrs(funcToLearn,0,2.5,1280)
 
 model=buildModel()
 
-for i in range(5):
+for i in range(10):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
     xtest,ytest=getArrs(model.predict,0,3.2,512)
@@ -59,8 +62,9 @@ for i in range(5):
     plt.plot(xxpected.flatten(), yxpected.flatten(), 'r')
     plt.plot(xtrain.flatten(), ytrain.flatten(), 'g')
     plt.savefig('plots/plot'+str(i)+'.pdf')
-
     os.startfile('plots\\plot'+str(i)+'.pdf')#webbrowser.open('plots/plot'+str(i)+'.pdf')
+
+    time.sleep(0.75)
 
 
 
