@@ -20,6 +20,7 @@ def buildModel():
     #model.add(Dense(40, activation='tanh'))
     #model.add(Dense(24, activation='tanh'))
     model.add(Dense(1, input_shape=[1]))
+    model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
     return model
 
@@ -46,7 +47,7 @@ xtrain,ytrain=getArrs(funcToLearn,0,2.5,256)
 
 model=buildModel()
 
-for i in range(5):
+for i in range(10):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
     xtest,ytest=getArrs(model.predict,0,3.2,512)
