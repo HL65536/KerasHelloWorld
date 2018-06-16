@@ -19,8 +19,8 @@ def buildModel():
     #model.add(Dense(24, activation='tanh',input_shape=[1]))
     #model.add(Dense(40, activation='tanh'))
     #model.add(Dense(24, activation='tanh'))
-    model.add(Dense(1, input_shape=[1]))
-    model.add(Dense(1))
+    model.add(Dense(1, activation='relu', input_shape=[1]))
+    #model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
     return model
 
