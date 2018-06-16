@@ -22,7 +22,7 @@ def buildModel():
     #model.add(Dense(24, activation='tanh'))
     model.add(Dense(1, input_shape=[1]))
     model.add(keras.layers.LeakyReLU(alpha=alpha))
-    #model.add(Dense(1))
+    model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
     return model
 
