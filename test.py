@@ -11,7 +11,7 @@ import os
 import time
 
 def funcToLearn(x):
-    return 2*math.sin(x*4)
+    return 2*math.sin(x*4)+3
 
 
 def buildModel():
@@ -52,7 +52,7 @@ xtrain,ytrain=getArrs(funcToLearn,0,2.5*2,20)
 
 model=buildModel()
 
-numOfEpochs=100
+numOfEpochs=101
 
 plotsAllowed=[]
 for i in range(numOfEpochs):
