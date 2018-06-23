@@ -48,11 +48,11 @@ def plot(func,start,end,vals):
     plt.show()
 
 xxpected,yxpected=getArrs(funcToLearn,-2,4,1200)
-xtrain,ytrain=getArrs(funcToLearn,0,2.5,1280)
+xtrain,ytrain=getArrs(funcToLearn,0,2.5,12)
 
 model=buildModel()
 
-numOfEpochs=100
+numOfEpochs=64
 
 plotsAllowed=[]
 for i in range(numOfEpochs):
@@ -60,8 +60,8 @@ for i in range(numOfEpochs):
 
 for i in range(numOfEpochs):
     print(str(i))
-    model.fit(x=xtrain,y=ytrain,epochs=1)
-    xtest,ytest=getArrs(model.predict,0,3.2,512)
+    model.fit(x=xtrain,y=ytrain,epochs=100)
+    xtest,ytest=getArrs(model.predict,-1.8,3.8,512)
 
     if i in plotsAllowed:
         plt.figure(i)
