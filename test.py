@@ -21,9 +21,9 @@ def buildModel():
     #model.add(Dense(24, activation='tanh',input_shape=[1]))
     #model.add(Dense(40, activation='tanh'))
     #model.add(Dense(24, activation='tanh'))
-    model.add(Dense(1, input_shape=[1]))
+    model.add(Dense(10, input_shape=[1]))
     model.add(keras.layers.LeakyReLU(alpha=alpha))
-    model.add(Dense(2))
+    model.add(Dense(10))
     model.add(keras.layers.LeakyReLU(alpha=alpha))
     model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
@@ -52,7 +52,7 @@ xtrain,ytrain=getArrs(funcToLearn,0,2.5,1280)
 
 model=buildModel()
 
-for i in range(10):
+for i in range(20):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
     xtest,ytest=getArrs(model.predict,0,3.2,512)
