@@ -21,9 +21,13 @@ def buildModel():
     #model.add(Dense(24, activation='tanh',input_shape=[1]))
     #model.add(Dense(40, activation='tanh'))
     #model.add(Dense(24, activation='tanh'))
-    model.add(Dense(10, input_shape=[1]))
-    model.add(keras.layers.LeakyReLU(alpha=alpha))
-    model.add(Dense(10))
+    model.add(Dense(10, activation='tanh', input_shape=[1]))
+    #model.add(keras.layers.LeakyReLU(alpha=alpha))
+    model.add(Dense(20, activation='tanh'))
+    #model.add(keras.layers.LeakyReLU(alpha=alpha))
+    model.add(Dense(30, activation='tanh'))
+    #model.add(keras.layers.LeakyReLU(alpha=alpha))
+    model.add(Dense(20))
     model.add(keras.layers.LeakyReLU(alpha=alpha))
     model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
@@ -48,7 +52,7 @@ def plot(func,start,end,vals):
     plt.show()
 
 xxpected,yxpected=getArrs(funcToLearn,-2,4*2,1200*2)
-xtrain,ytrain=getArrs(funcToLearn,0,2.5*2,20)
+xtrain,ytrain=getArrs(funcToLearn,0,2.5*2,10)
 
 model=buildModel()
 
