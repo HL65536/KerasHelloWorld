@@ -52,12 +52,18 @@ xtrain,ytrain=getArrs(funcToLearn,0,2.5,1280)
 
 model=buildModel()
 
+numOfEpochs=200
+
+plotsAllowed=[]
+for i in range(numOfEpochs):
+    plotsAllowed.append(i*i)
+
 for i in range(80):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
     xtest,ytest=getArrs(model.predict,0,3.2,512)
 
-    if i%5==0:
+    if i in plotsAllowed:
         plt.figure(i)
         plt.plot(xtest.flatten(), ytest.flatten(), 'b')
         plt.plot(xxpected.flatten(), yxpected.flatten(), 'r')
