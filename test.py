@@ -11,7 +11,7 @@ import os
 import time
 
 def funcToLearn(x):
-    return x*x-4
+    return 2*math.sin(x*4)
 
 
 def buildModel():
