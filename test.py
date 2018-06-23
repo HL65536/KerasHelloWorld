@@ -47,18 +47,18 @@ def plot(func,start,end,vals):
     plt.plot(inVals, outVals)
     plt.show()
 
-xxpected,yxpected=getArrs(funcToLearn,0,4,1200)
+xxpected,yxpected=getArrs(funcToLearn,-2,4,1200)
 xtrain,ytrain=getArrs(funcToLearn,0,2.5,1280)
 
 model=buildModel()
 
-numOfEpochs=200
+numOfEpochs=100
 
 plotsAllowed=[]
 for i in range(numOfEpochs):
     plotsAllowed.append(i*i)
 
-for i in range(80):
+for i in range(numOfEpochs):
     print(str(i))
     model.fit(x=xtrain,y=ytrain,epochs=1)
     xtest,ytest=getArrs(model.predict,0,3.2,512)
@@ -70,9 +70,6 @@ for i in range(80):
         plt.plot(xtrain.flatten(), ytrain.flatten(), 'g')
         plt.savefig('plots/plot' + str(i) + '.pdf')
         os.startfile('plots\\plot' + str(i) + '.pdf')  # webbrowser.open('plots/plot'+str(i)+'.pdf')
-
-        time.sleep(0.75)
-
 
     i += 1
 
