@@ -11,7 +11,7 @@ import os
 import time
 
 def funcToLearn(x):
-    return 2*math.sin(x*4)+3
+    return 2*math.sin(x*4)
 
 
 def buildModel():
@@ -21,15 +21,7 @@ def buildModel():
     #model.add(Dense(24, activation='tanh',input_shape=[1]))
     #model.add(Dense(40, activation='tanh'))
     #model.add(Dense(24, activation='tanh'))
-    model.add(Dense(8, input_shape=[1]))
-    model.add(keras.layers.LeakyReLU(alpha=alpha))
-    model.add(Dense(10))
-    model.add(keras.layers.LeakyReLU(alpha=alpha))
-    model.add(Dense(10))
-    model.add(keras.layers.LeakyReLU(alpha=alpha))
-    model.add(Dense(10))
-    model.add(keras.layers.LeakyReLU(alpha=alpha))
-    model.add(Dense(8))
+    model.add(Dense(800, input_shape=[1]))
     model.add(keras.layers.LeakyReLU(alpha=alpha))
     model.add(Dense(1))
     model.compile(loss=keras.losses.MSE, optimizer=keras.optimizers.RMSprop(lr=lr,decay=0.0015))
